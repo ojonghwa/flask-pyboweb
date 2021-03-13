@@ -1,7 +1,7 @@
 import functools
 import imghdr
 import os
-import random     # p174
+import random
 from flask import Blueprint, url_for, render_template, flash, abort
 from flask import request, session, g, current_app  # p150
 from werkzeug.security import generate_password_hash, check_password_hash  # p150
@@ -37,6 +37,7 @@ def signup():
             return redirect(url_for('main.index'))
         else:
             flash('이미 존재하는 사용자ID 입니다.')
+
     return render_template('auth/signup.html', form=form)
 
 
@@ -57,6 +58,7 @@ def login():
             session['user_id'] = user.idx
             return redirect(url_for('main.index'))
         flash(error)
+
     return render_template('auth/login.html', form=form)
 
 
@@ -87,6 +89,7 @@ def login_required(view):
     return wrapped_view
 
 
+# 이미지파일 업로드시 헤더내용 검사하여 올바른 파일인지 확인
 def validate_image(stream):
     header = stream.read(512)
     stream.seek(0)
@@ -105,6 +108,7 @@ def profile():
     else:
         if request.method == 'POST':
             uploaded_file = request.files['file']
+
             #filename = uploaded_file.filename
             filename = secure_filename(
                 uploaded_file.filename)  # 파일 디렉터리 변경 저장 차단
@@ -122,5 +126,5 @@ def profile():
                                    g.user.userid + '.jpg')
 
         file = g.user.userid + '.jpg'
-        # 캐시방지
+        # 캐시방지용 random 함수 사용
         return render_template('auth/profile.html', image_file=file, ver=random.random())

@@ -3,24 +3,22 @@
 
 <head>
     <!-- Required meta tags -->
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
 
     <!-- 2021.3.10 -->
-    <link rel="shortcut icon" href="{{ url_for('static', filename='/favicon.ico') }}" type="image/x-icon">
-    <link rel="icon" href="{{ url_for('static', filename='favicon.ico') }}" type="image/x-icon">
+    <link rel="shortcut icon" href="{{ url_for('static', filename='/favicon.ico') }}" type="image/x-icon" />
+    <link rel="icon" href="{{ url_for('static', filename='favicon.ico') }}" type="image/x-icon" />
 
     <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="{{ url_for('static', filename='bootstrap.min.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='bootstrap.min.css') }}" />
     <!-- pybo CSS -->
-    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}" />
 
-    <!-- <title>파이보</title> -->
-    <!-- 2021.3.10, 모든 templates html 에 추가할 것 -->
     <title>{% block title %} {% endblock %}</title>
 </head>
 
-<body>
+<body style="padding-top: 65px;">
     <!-- 부트스트랩 내비게이션 포함 -->
     {% include "navbar.html" %}
 
