@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+{% block title %}프로필{% endblock %}
+
+{% block content %}
+<div class="container my-3">
+
+  {{ g.user.userid }} 로그인 했음 <br><br>
+
+  {{ g.user.email }} <br>
+  {{ g.user.phone }} <br><br>
+
+  <hr>
+  <!-- <img src="..\..\static\uploads\ojonghwa.jpg" style="width: 64px"> -->
+  <!-- <img src="{{ url_for('static', filename='uploads/' + g.user.userid + '.jpg') }}" style="width: 64px"> -->
+  <!-- <img src="/static/uploads/jhoh.jpg?ver=0.1320993351209866" style="width: 64px"> 캐시 방지 -->
+  <img src="{{ url_for('static', filename='uploads/' + image_file) }}?ver={{ ver }}" style="width: 64px">
+
+  <br><br>
+  <form method="POST" action="" enctype="multipart/form-data">
+    <p>
+      <input type="file" name="file" accept=".jpg">
+      <!-- <input type="file" name="file" accept="image/*"> 모든 이미지 종류 파일 표시 -->
+      <!-- <input type="file" name="file"> 모든 파일 표시-->
+    </p>
+    <p><input type="submit" value="사진등록"></p>
+  </form>
+
+</div>
+{% endblock %}

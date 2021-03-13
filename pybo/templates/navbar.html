@@ -32,6 +32,10 @@
             
             {% if g.user %}             <!-- p156 -->
             <ul class="nav navbar-nav navbar-right">
+                <li class="nav-item ">                  <!-- ojonghwa 2021.3.12 -->
+                    <a class="nav-link" href="{{ url_for('auth.profile')}}">프로필</a>  <!-- ojonghwa 2021.3.11 -->
+                </li>
+
                 <li class="nav-item ">
                     <a class="nav-link" href="{{ url_for('auth.logout') }}">{{ g.user.userid }} (로그아웃)</a>
                 </li>
